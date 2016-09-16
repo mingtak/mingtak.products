@@ -17,4 +17,25 @@
       directory="static"
       />
 
+  <browser:page
+      name="product_view"
+      for="mingtak.products.interfaces.IProduct"
+      class=".views.ProductView"
+      permission="zope2.View"
+      />
+
+  <browser:page
+      name="product_listing"
+      for="plone.app.contenttypes.interfaces.IFolder"
+      class=".views.ProductListing"
+      permission="zope2.View"
+      />
+
+  <browser:page
+      name="cart_add"
+      for="*"
+      class=".cart.CartAdd"
+      permission="zope2.View"
+      />
+
 </configure>

@@ -1,0 +1,38 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+    xmlns:tal="http://xml.zope.org/namespaces/tal"
+    xmlns:metal="http://xml.zope.org/namespaces/metal"
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    lang="en"
+    metal:use-macro="context/main_template/macros/master"
+    i18n:domain="mingtak.products">
+<body>
+
+
+<metal:content-core fill-slot="content-core">
+<metal:content-core define-macro="content-core"
+                    tal:define="toc context/table_of_contents|nothing;">
+
+<h3 i18n:translate="">Product Info</h3>
+<p tal:content="string:title: ${context/title}" />
+<p tal:content="string:description: ${context/description}" />
+<p tal:content="string:productUrl: ${context/productUrl}" />
+<p tal:content="string:inStock: ${context/inStock}" />
+<p tal:content="string:brand: ${context/brand}" />
+<p tal:content="string:listPrice: ${context/listPrice}" />
+<p tal:content="string:salePrice: ${context/salePrice}" />
+<p tal:content="string:bonusPoint: ${context/bonusPoint}" />
+<p tal:content="string:maxUsedBonus: ${context/maxUsedBonus}" />
+<p tal:content="structure string:promotionalText: ${context/promotionalText/raw}" />
+<p tal:content="string:heroText: ${context/heroText}" />
+<p tal:content="string:standardShippingCost: ${context/standardShippingCost}" />
+<p tal:content="string:lastUpdated: ${context/lastUpdated}" />
+<p tal:replace="structure context/@@images/image_1/mini" />
+<p tal:replace="structure context/@@images/image_2/mini" />
+<p tal:replace="structure context/@@images/image_3/mini" />
+<p tal:replace="structure context/@@images/image_4/mini" />
+<p tal:replace="structure context/@@images/image_5/mini" />
+</metal:content-core>
+</metal:content-core>
+
+</body>
+</html>

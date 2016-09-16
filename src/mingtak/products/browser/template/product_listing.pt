@@ -1,0 +1,72 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+    xmlns:tal="http://xml.zope.org/namespaces/tal"
+    xmlns:metal="http://xml.zope.org/namespaces/metal"
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    xmlns:v-on="http://vuejs.org"
+    lang="en"
+    metal:use-macro="context/main_template/macros/master"
+    i18n:domain="mingtak.products">
+<body>
+
+
+<metal:content-core fill-slot="content-core">
+<metal:content-core define-macro="content-core"
+                    tal:define="toc context/table_of_contents|nothing;">
+
+<h3 i18n:translate="">Product Listing</h3>
+<tal:products define="items context/getChildNodes">
+  <p tal:repeat="item items">
+
+    <a tal:attributes="href item/absolute_url; 
+                       title item/title">
+      <img tal:replace="structure item/@@images/image_1/thumb" />
+    </a>
+    <a href="#" class="btn btn-info"
+       tal:attributes="id item/UID"
+       v-on:click="addToCart('${item/UID}')">放入購物車</a>
+
+  </p>
+</tal:products>
+
+
+
+<div id="cart">
+  <p>{{ message }}</p>
+</div>
+
+<!-- 上線前要改 min <script src="https://vuejs.org/js/vue.min.js" /> -->
+<script src="https://vuejs.org/js/vue.js" />
+<script src="https://cdn.jsdelivr.net/vue.resource/1.0.2/vue-resource.min.js"></script>
+
+<script>
+new Vue({
+  el: 'body',
+  data: {
+    message: 'Hello, cart in here!'
+  },
+  methods: {
+    addToCart: function (uid) {
+      console.log(uid)
+      // GET /someUrl
+      this.$http.get('/outlet/cart_add?uid=' + uid).then((response) => {
+        // success callback
+           console.log(response.body);
+        }, (response) => {
+          // error callback
+            console.log('error');
+      });
+
+      this.message = this.message.split('').reverse().join('')
+    }
+  }
+})
+</script>
+
+
+
+
+</metal:content-core>
+</metal:content-core>
+
+</body>
+</html>
