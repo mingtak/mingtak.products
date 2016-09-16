@@ -7,8 +7,6 @@ cart_items = len(json.loads(itemInCart))
 
 <div id='vue_js_code'>
 
-<h1>${view/cart_items}</h1>
-
 <!-- 上線前要改 min <script src="https://vuejs.org/js/vue.min.js" /> -->
 <script src="https://vuejs.org/js/vue.js" />
 <script src="https://cdn.jsdelivr.net/vue.resource/1.0.2/vue-resource.min.js"></script>
