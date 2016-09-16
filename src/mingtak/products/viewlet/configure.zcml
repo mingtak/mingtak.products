@@ -1,0 +1,19 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="mingtak.products">
+
+
+
+    <browser:viewlet
+      name="js_code"
+      for="*"
+      manager="plone.app.layout.viewlets.interfaces.IBelowContent"
+      template="template/js_code.pt"
+      class=".viewlet.JSCode"
+      permission="zope2.View"
+      />
+
+</configure>
+

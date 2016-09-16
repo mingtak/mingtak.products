@@ -15,8 +15,6 @@
 
 <?python
 from plone import api
-request = econtext['request']
-itemInCart = request.cookies.get('itemInCart', 'null')
 ?>
 
 <h3 i18n:translate="">Product Listing</h3>
@@ -41,32 +39,9 @@ itemInCart = request.cookies.get('itemInCart', 'null')
 </tal:products>
 
 <div class="cart_state">
-  <p>{{ message }}</p>
+  <p>{{ message | json }}</p>
 </div>
 
-<!-- 上線前要改 min <script src="https://vuejs.org/js/vue.min.js" /> -->
-<script src="https://vuejs.org/js/vue.js" />
-<script src="https://cdn.jsdelivr.net/vue.resource/1.0.2/vue-resource.min.js"></script>
-<script>
-new Vue({
-  el: 'body',
-  data: {
-    message: '${itemInCart}'
-  },
-  methods: {
-    addToCart: function (action, uid) {
-      // GET
-      this.$http.get('/outlet/cart_update?action=' + action + '&uid=' + uid).then((response) => {
-        // success callback
-           this.message = response.body;
-        }, (response) => {
-          // error callback
-            console.log('error');
-      });
-    }
-  }
-})
-</script>
 
 </metal:content-core>
 </metal:content-core>
