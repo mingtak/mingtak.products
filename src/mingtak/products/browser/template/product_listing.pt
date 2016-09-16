@@ -21,7 +21,7 @@
                        title item/title">
       <img tal:replace="structure item/@@images/image_1/thumb" />
     </a>
-    <a href="#" class="btn btn-info"
+    <a href="javascript: void(0)" class="btn btn-info"
        tal:attributes="id item/UID"
        v-on:click="addToCart('${item/UID}')">放入購物車</a>
 
@@ -38,25 +38,27 @@
 <script src="https://vuejs.org/js/vue.js" />
 <script src="https://cdn.jsdelivr.net/vue.resource/1.0.2/vue-resource.min.js"></script>
 
+
+<?python
+request = econtext['request']
+itemInCart = request.cookies.get('itemInCart', 'null')
+?>
 <script>
 new Vue({
   el: 'body',
   data: {
-    message: 'Hello, cart in here!'
+    message: '${itemInCart}'
   },
   methods: {
     addToCart: function (uid) {
-      console.log(uid)
-      // GET /someUrl
+      // GET
       this.$http.get('/outlet/cart_add?uid=' + uid).then((response) => {
         // success callback
-           console.log(response.body);
+           this.message = response.body;
         }, (response) => {
           // error callback
             console.log('error');
       });
-
-      this.message = this.message.split('').reverse().join('')
     }
   }
 })

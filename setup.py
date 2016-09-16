@@ -43,6 +43,8 @@ setup(
         'setuptools',
         'z3c.jbot',
         'plone.app.dexterity',
+        'collective.dexteritytextindexer',
+        'plone.formwidget.contenttree',
     ],
     extras_require={
         'test': [
