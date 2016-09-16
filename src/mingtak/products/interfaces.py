@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+#TODO: 整批彙入
 """Module where all interfaces, events and exceptions live."""
 
 from mingtak.products import _
