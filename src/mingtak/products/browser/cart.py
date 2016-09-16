@@ -2,18 +2,16 @@
 from mingtak.products import _
 from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-#from zope.component import getMultiAdapter
 from plone import api
 import json
 import logging
 
 
-class CartAdd(BrowserView):
-    """ Cart Add
+class CartUpdate(BrowserView):
+    """ Cart Update
     """
 
-    logger = logging.getLogger('Add Item to Cart.')
-    template = ViewPageTemplateFile("template/cart.pt")
+    logger = logging.getLogger('Update Item to Cart.')
 
     def __call__(self):
         context = self.context
@@ -30,17 +28,30 @@ class CartAdd(BrowserView):
             itemInCart = {}
 
         itemUID = request.form.get('uid')
-        if not itemUID:
+        action = request.form.get('action')
+        if not (itemUID and action):
             response.redirect(portal.absolute_url())
             return
         if not api.content.find(Type='Product', UID=itemUID):
             response.redirect(portal.absolute_url())
             return
 
-        if itemInCart.get(itemUID):
-            itemInCart[itemUID] += 1
+        if action == 'plus':
+            if itemInCart.get(itemUID):
+                itemInCart[itemUID] += 1
+            else:
+                itemInCart[itemUID] = 1
+        elif action == 'less':
+            item = itemInCart.get(itemUID)
+            if item > 1:
+                itemInCart[itemUID] -= 1
+            else:
+                itemInCart.pop(itemUID)
+        elif action == 'del':
+            itemInCart.pop(itemUID)
         else:
-            itemInCart[itemUID] = 1
+            response.redirect(portal.absolute_url())
+            return
 
         itemInCart = json.dumps(itemInCart)
         request.response.setCookie('itemInCart', itemInCart)

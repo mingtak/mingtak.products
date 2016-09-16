@@ -32,9 +32,9 @@
       />
 
   <browser:page
-      name="cart_add"
+      name="cart_update"
       for="*"
-      class=".cart.CartAdd"
+      class=".cart.CartUpdate"
       permission="zope2.View"
       />
 
