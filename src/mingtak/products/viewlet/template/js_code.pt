@@ -2,7 +2,7 @@
 import json
 request = econtext['request']
 itemInCart = request.cookies.get('itemInCart', 'null')
-cart_items = len(json.loads(itemInCart))
+cart_items = 0 if json.loads(itemInCart) is None else len(json.loads(itemInCart))
 ?>
 
 <div id='vue_js_code'>
