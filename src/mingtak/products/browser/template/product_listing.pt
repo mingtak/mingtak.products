@@ -27,19 +27,19 @@ from plone import api
       </a>
       <a href="javascript: void(0)" class="btn btn-info"
          tal:attributes="id item/UID"
-         v-on:click="addToCart('plus', '${item/UID}')">放入購物車</a>
+         v-on:click="updateCart('plus', '${item/UID}')">放入購物車</a>
       <a href="javascript: void(0)" class="btn btn-warning"
          tal:attributes="id item/UID"
-         v-on:click="addToCart('less', '${item/UID}')">數量減1</a>
+         v-on:click="updateCart('less', '${item/UID}')">數量減1</a>
       <a href="javascript: void(0)" class="btn btn-danger"
          tal:attributes="id item/UID"
-         v-on:click="addToCart('del', '${item/UID}')">刪除本項</a>
+         v-on:click="updateCart('del', '${item/UID}')">刪除本項</a>
     </p>
   </tal:item>
 </tal:products>
 
 <div class="cart_state">
-  <p>{{ message | json }}</p>
+  <p>{{ item_in_cart | json }}</p>
 </div>
 
 

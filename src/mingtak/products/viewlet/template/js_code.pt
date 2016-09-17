@@ -1,5 +1,7 @@
 <?python
+from plone import api
 import json
+portal = api.portal.get()
 request = econtext['request']
 itemInCart = request.cookies.get('itemInCart', 'null')
 cart_items = 0 if json.loads(itemInCart) is None else len(json.loads(itemInCart))
@@ -7,20 +9,51 @@ cart_items = 0 if json.loads(itemInCart) is None else len(json.loads(itemInCart)
 
 <div id='vue_js_code'>
 
-<!-- 上線前要改 min <script src="https://vuejs.org/js/vue.min.js" /> -->
-<script src="https://vuejs.org/js/vue.js" />
+<script src="https://vuejs.org/js/vue.min.js" />
+<!-- <script src="https://vuejs.org/js/vue.js" /> -->
 <script src="https://cdn.jsdelivr.net/vue.resource/1.0.2/vue-resource.min.js"></script>
 <script>
 var vm = new Vue({
   el: 'body',
   data: {
-    message: '${itemInCart}',
+    item_in_cart: '${itemInCart}',
     cart_items: '${cart_items}',
+    signal: true,
   },
+
+  computed: {
+    amount: function() {
+      var items = $("span.subamount");
+      var total = 0;
+      for(var i=0; i<items.length; i+=1){
+          total += parseInt(items[i].dataset['subamount']);
+      }
+      this.signal;
+      return total;
+    },
+  },
+
   methods: {
-    addToCart: function (action, uid) {
+    updateCart_checkoutConfirm: function(action, uid) {
+        vm.updateCart(action, uid);
+        if(action === 'less'){
+            if($('#' + uid + ' span.qty-fld')[0].textContent === '0'){
+                $('#' + uid).fadeOut("solw",function(){
+                    $(this).remove();
+                });
+            };
+        };
+        if(action === 'del'){
+            $('#' + uid).fadeOut("solw",function(){
+                $(this).remove();
+            });
+        };
+        this.signal = ! this.signal;
+    },
+
+    updateCart: function (action, uid) {
       // GET
-      this.$http.get('/outlet/cart_update?action=' + action + '&uid=' + uid).then((response) => {
+      this.$http.get('${portal/absolute_url}/@@cart_update?action=' + action + '&uid=' + uid).then((response) => {
         // success callback
            jsonData = JSON.parse(response.body);
            l = 0;
@@ -29,13 +62,17 @@ var vm = new Vue({
                l++;
              };
            };
-           this.message = jsonData;
+           this.item_in_cart = jsonData;
            this.cart_items = l;
         }, (response) => {
           // error callback
             console.log('error');
       });
-    }
+    },
+
+    toOutlet: function(){
+        window.location = '${portal/absolute_url}/outlet';
+    },
   }
 })
 </script>
