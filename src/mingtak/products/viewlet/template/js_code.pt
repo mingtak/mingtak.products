@@ -13,11 +13,15 @@ cart_items = 0 if json.loads(itemInCart) is None else len(json.loads(itemInCart)
 <!-- <script src="https://vuejs.org/js/vue.js" /> -->
 <script src="https://cdn.jsdelivr.net/vue.resource/1.0.2/vue-resource.min.js"></script>
 <script>
+
+
 var vm = new Vue({
   el: 'body',
+
   data: {
     item_in_cart: '${itemInCart}',
     cart_items: '${cart_items}',
+    transition_name: 'fadeout',
     signal: true,
   },
 
@@ -75,6 +79,12 @@ var vm = new Vue({
     },
   }
 })
+
 </script>
+
+
+
+
+
 
 </div>
