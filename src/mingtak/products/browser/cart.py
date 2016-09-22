@@ -22,9 +22,10 @@ class CartUpdate(BrowserView):
         logger = self.logger
 
         # itemInCart's format: {UID:amount, ...}
-        itemInCart = request.cookies.get('itemInCart', 'null')
-        itemInCart = json.loads(itemInCart)
-        if itemInCart is None:
+        itemInCart = request.cookies.get('itemInCart', '{}')
+        if itemInCart:
+            itemInCart = json.loads(itemInCart)
+        else:
             itemInCart = {}
 
         itemUID = request.form.get('uid')

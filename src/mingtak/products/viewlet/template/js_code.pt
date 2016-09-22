@@ -3,8 +3,11 @@ from plone import api
 import json
 portal = api.portal.get()
 request = econtext['request']
-itemInCart = request.cookies.get('itemInCart', 'null')
-cart_items = 0 if json.loads(itemInCart) is None else len(json.loads(itemInCart))
+itemInCart = request.cookies.get('itemInCart', '{}')
+if itemInCart:
+    cart_items = len(json.loads(itemInCart))
+else:
+    cart_items = 0
 ?>
 
 <div id='vue_js_code'>
@@ -14,7 +17,6 @@ cart_items = 0 if json.loads(itemInCart) is None else len(json.loads(itemInCart)
 <script src="https://cdn.jsdelivr.net/vue.resource/1.0.2/vue-resource.min.js"></script>
 <script>
 
-
 var vm = new Vue({
   el: 'body',
 
@@ -22,10 +24,19 @@ var vm = new Vue({
     item_in_cart: '${itemInCart}',
     cart_items: '${cart_items}',
     transition_name: 'fadeout',
+    LogisticsType: 'home',
     signal: true,
   },
 
   computed: {
+    logist: function() {
+        this.LogisticsType;
+        $(function() {
+            $('form').dk_tw_citySelector('.city', '.district', '.zipcode');
+        });
+        return;
+    },
+
     amount: function() {
       var items = $("span.subamount");
       var total = 0;
@@ -78,11 +89,29 @@ var vm = new Vue({
         window.location = '${portal/absolute_url}/outlet';
     },
   }
-})
+});
+
+
+      $('document').ready(function() {
+          var $container = $('body');
+          $container.imagesLoaded( function() {
+<!-- Related Items -->
+            $('#related-products').rivaSlider({
+              visible : 4,
+              selector : 'envor-product-1'
+            });
+            $('.carousel').carousel();
+<!-- sorted Item -->
+            $('#estate-sorting').rivaSorting({
+              showAll : 1
+            });
+          });
+      });
+
+
+
 
 </script>
-
-
 
 
 
