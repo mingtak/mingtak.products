@@ -51,6 +51,7 @@ var vm = new Vue({
   methods: {
     updateCart_checkoutConfirm: function(action, uid) {
         vm.updateCart(action, uid);
+
         if(action === 'less'){
             if($('#' + uid + ' span.qty-fld')[0].textContent === '0'){
                 $('#' + uid).fadeOut("solw",function(){
@@ -79,6 +80,8 @@ var vm = new Vue({
            };
            this.item_in_cart = jsonData;
            this.cart_items = l;
+           updateCartState = $.ajax({url:'/@@update_cart_state', async: false});
+           $('#topbarcart').html(updateCartState.responseText);
         }, (response) => {
           // error callback
             console.log('error');
@@ -107,8 +110,6 @@ var vm = new Vue({
             });
           });
       });
-
-
 
 
 </script>
