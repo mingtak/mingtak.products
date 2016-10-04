@@ -1,6 +1,3 @@
-# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
-# SOME DESCRIPTIVE TITLE.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
@@ -15,43 +12,43 @@ msgstr ""
 "Language-Code: en\n"
 "Language-Name: English\n"
 "Preferred-Encodings: utf-8 latin1\n"
-"Domain: mingtak.products\n"
+"Domain: DOMAIN\n"
 
 #: ./interfaces.py:127
 msgid "Bonus Point"
-msgstr ""
+msgstr "紅利點數"
 
 #: ./interfaces.py:128
 msgid "Bonus point setting, please filling decimal point. maximum is 0.05 (5%)"
-msgstr ""
+msgstr "紅利點數設定，請填小數點，例如 0.05 就是 5%"
 
 #: ./interfaces.py:67
 msgid "Brand"
-msgstr ""
+msgstr "品牌"
 
 #: ./interfaces.py:68
 msgid "Brand name."
-msgstr ""
+msgstr "品牌名稱."
 
 #: ./interfaces.py:169
 msgid "Date of the most recent update to the product."
-msgstr ""
+msgstr "產品資訊更新日期"
 
 #: ./interfaces.py:49
 msgid "Description"
-msgstr ""
+msgstr "描述"
 
 #: ./interfaces.py:155
 msgid "Hero Text"
-msgstr ""
+msgstr "Hero 文字"
 
 #: ./interfaces.py:61
 msgid "If In Stock, Please check it."
-msgstr ""
+msgstr "若有庫存，請打勾"
 
 #: ./interfaces.py:60
 msgid "In Stock?"
-msgstr ""
+msgstr "是否有庫存?"
 
 #: ./configure.zcml:21
 msgid "Installs the mingtak.products add-on."
@@ -59,83 +56,83 @@ msgstr ""
 
 #: ./interfaces.py:168
 msgid "Last Updated"
-msgstr ""
+msgstr "最後更新"
 
 #: ./interfaces.py:73
 msgid "List Price"
-msgstr ""
+msgstr "定價"
 
 #: ./interfaces.py:137
 msgid "Maximum Used Bonus Points"
-msgstr ""
+msgstr "最大使用紅利點數"
 
 #: ./profiles/default/types/Product.xml
 msgid "Product"
-msgstr ""
+msgstr "產品"
 
 #: ./interfaces.py:44
 msgid "Product Id"
-msgstr ""
+msgstr "產品 id"
 
 #: ./interfaces.py:91
 msgid "Product Image."
-msgstr ""
+msgstr "產品圖檔"
 
 #: ./browser/template/product_view.pt:15
 msgid "Product Info"
-msgstr ""
+msgstr "產品資訊"
 
 #: ./browser/template/product_listing.pt:20
 msgid "Product Listing"
-msgstr ""
+msgstr "產品列表"
 
 #: ./interfaces.py:39
 msgid "Product Name"
-msgstr ""
+msgstr "產品名稱"
 
 #: ./interfaces.py:92
 msgid "Product image for header."
-msgstr ""
+msgstr "產品圖檔(首圖)"
 
 #: ./interfaces.py:98
 msgid "Product image."
-msgstr ""
+msgstr "產品圖檔"
 
 #: ./interfaces.py:55
 msgid "Product introduction web page include http:// or https://"
-msgstr ""
+msgstr "產品原廠網頁網址"
 
 #: ./interfaces.py:147
 msgid "Promotional Text"
-msgstr ""
+msgstr "促銷文字"
 
 #: ./interfaces.py:156
 msgid "Promotional Text for Hero page"
-msgstr ""
+msgstr "促銷文字(置於 Hero page)"
 
 #: ./interfaces.py:148
 msgid "Promotional Text, support html format richtext."
-msgstr ""
+msgstr "促銷文字，支援 html 格式(Richtext)"
 
 #: ./interfaces.py:54
 msgid "Pruduct URL"
-msgstr ""
+msgstr "產品網址"
 
 #: ./interfaces.py:79
 msgid "Sale price"
-msgstr ""
+msgstr "售價"
 
 #: ./interfaces.py:80
 msgid "Sale price for the product if different from the list price, must be <= listPrice."
-msgstr ""
+msgstr "產品真正售價，若與定價不同，必需小於定價"
 
 #: ./interfaces.py:162
 msgid "Standard shipping cost"
-msgstr ""
+msgstr "標準運費"
 
 #: ./interfaces.py:74
 msgid "The list price of the product."
-msgstr ""
+msgstr "產品定價"
 
 #: ./configure.zcml:30
 msgid "Uninstalls the mingtak.products add-on."
@@ -147,7 +144,7 @@ msgstr ""
 
 #: ./interfaces.py:138
 msgid "You can use a maximum bonus points."
-msgstr ""
+msgstr "您可以使用的最大紅利點數"
 
 #: ./configure.zcml:21
 msgid "mingtak.products"
