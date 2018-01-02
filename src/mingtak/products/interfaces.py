@@ -15,6 +15,7 @@ from plone.app.textfield import RichText
 from plone.autoform import directives as form
 from plone.formwidget.contenttree import ObjPathSourceBinder
 from datetime import datetime
+from plone import api
 
 class IMingtakProductsLayer(IDefaultBrowserLayer):
     """Marker interface that defines a browser layer."""
@@ -37,11 +38,6 @@ class IProduct(Interface):
     dexteritytextindexer.searchable('title')
     title = schema.TextLine(
         title=_(u"Product Name"),
-        required=True,
-    )
-
-    productId = schema.TextLine(
-        title=_(u"Product Id"),
         required=True,
     )
 

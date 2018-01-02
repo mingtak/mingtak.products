@@ -31,6 +31,13 @@
 <p tal:condition="context/image_3" tal:replace="structure context/@@images/image_3/mini" />
 <p tal:condition="context/image_4" tal:replace="structure context/@@images/image_4/mini" />
 <p tal:condition="context/image_5" tal:replace="structure context/@@images/image_5/mini" />
+
+<hr>
+<p>
+    <a href="${python:context.getParentNode().absolute_url()}">To product listing</a>
+</p>
+
+
 </metal:content-core>
 </metal:content-core>
 

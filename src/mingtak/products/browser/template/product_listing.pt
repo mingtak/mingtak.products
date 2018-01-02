@@ -23,9 +23,11 @@ from plone import api
     <p tal:condition="python:api.content.get_state(obj=item) == 'published'">
       <a tal:attributes="href item/absolute_url; 
                          title item/title">
+<span>${item/title}</span><br>
         <img tal:replace="structure item/@@images/image_1/thumb" />
       </a>
-      <a href="javascript: void(0)" class="btn btn-info"
+<br>
+<!--      <a href="javascript: void(0)" class="btn btn-info"
          tal:attributes="id item/UID"
          v-on:click="updateCart('plus', '${item/UID}')">放入購物車</a>
       <a href="javascript: void(0)" class="btn btn-warning"
@@ -34,14 +36,16 @@ from plone import api
       <a href="javascript: void(0)" class="btn btn-danger"
          tal:attributes="id item/UID"
          v-on:click="updateCart('del', '${item/UID}')">刪除本項</a>
+-->
     </p>
   </tal:item>
 </tal:products>
 
+<!--
 <div class="cart_state">
   <p>{{ item_in_cart | json }}</p>
 </div>
-
+-->
 
 </metal:content-core>
 </metal:content-core>
