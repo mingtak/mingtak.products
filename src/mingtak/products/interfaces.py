@@ -81,7 +81,6 @@ class IProduct(Interface):
         required=True,
     )
 
-
     Form.fieldset('images',
             label=u"Product Images",
             fields=['image_1', 'image_2', 'image_3', 'image_4', 'image_5']

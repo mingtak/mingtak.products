@@ -22,15 +22,15 @@
 <p tal:content="string:salePrice: ${context/salePrice}" />
 <p tal:content="string:bonusPoint: ${context/bonusPoint}" />
 <p tal:content="string:maxUsedBonus: ${context/maxUsedBonus}" />
-<p tal:content="structure string:promotionalText: ${context/promotionalText/raw}" />
+<p tal:condition="context/promotionalText" tal:content="structure string:promotionalText: ${context/promotionalText/raw}" />
 <p tal:content="string:heroText: ${context/heroText}" />
 <p tal:content="string:standardShippingCost: ${context/standardShippingCost}" />
 <p tal:content="string:lastUpdated: ${context/lastUpdated}" />
-<p tal:replace="structure context/@@images/image_1/mini" />
-<p tal:replace="structure context/@@images/image_2/mini" />
-<p tal:replace="structure context/@@images/image_3/mini" />
-<p tal:replace="structure context/@@images/image_4/mini" />
-<p tal:replace="structure context/@@images/image_5/mini" />
+<p tal:condition="context/image_1" tal:replace="structure context/@@images/image_1/mini" />
+<p tal:condition="context/image_2" tal:replace="structure context/@@images/image_2/mini" />
+<p tal:condition="context/image_3" tal:replace="structure context/@@images/image_3/mini" />
+<p tal:condition="context/image_4" tal:replace="structure context/@@images/image_4/mini" />
+<p tal:condition="context/image_5" tal:replace="structure context/@@images/image_5/mini" />
 </metal:content-core>
 </metal:content-core>
 
