@@ -31,11 +31,4 @@
       permission="zope2.View"
       />
 
-  <browser:page
-      name="cart_update"
-      for="*"
-      class=".cart.CartUpdate"
-      permission="zope2.View"
-      />
-
 </configure>
