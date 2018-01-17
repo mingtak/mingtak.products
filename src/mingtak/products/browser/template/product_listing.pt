@@ -25,7 +25,8 @@ from plone import api
                          title item/title">
 <span>${item/title}</span><br>
         <img tal:replace="structure item/@@images/image_1/thumb" />
-      </a>
+      </a> <a href="${portal_url}/@@cart_update?p_id=${item/id}&action=add">加入購物車</a> / 
+           <a href="${portal_url}/@@cart_update?p_id=${item/id}&action=del">刪除本項</a>
 <br>
 <!--      <a href="javascript: void(0)" class="btn btn-info"
          tal:attributes="id item/UID"
@@ -40,6 +41,11 @@ from plone import api
     </p>
   </tal:item>
 </tal:products>
+
+<a href="${portal_url}/@@confirm_cart">
+前往結帳
+</a>
+
 
 <!--
 <div class="cart_state">
